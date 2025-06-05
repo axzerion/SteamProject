@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8080/api/usergames';
+const API_BASE = 'http://localhost:8081/api/usergames';
 
 export const getPlayerCounts = async (appId, refresh = false) => {
     const response = await axios.get(`/api/playercount/${appId}`, {

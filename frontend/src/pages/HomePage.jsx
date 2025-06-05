@@ -52,12 +52,12 @@ function HomePage() {
 
             <div style={{ display: 'flex', marginTop: '2rem', gap: '2rem' }}>
                 <div style={{ flex: 1 }}>
-                    <h2>Recently Played Games</h2>
-                    <RecentlyPlayed />
-                </div>
-                <div style={{ flex: 1 }}>
                     <h2>Owned Games</h2>
                     <OwnedGames />
+                </div>
+                <div style={{ flex: 1 }}>
+                    <h2>Recently Played Games</h2>
+                    <RecentlyPlayed />
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@ package com.project.SteamProject.service;
 import com.project.SteamProject.dto.GameInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.util.*;
@@ -17,15 +19,24 @@ public class SteamUserGameService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public List<GameInfo> getRecentlyPlayedGames(String steamId) {
-        String url = UriComponentsBuilder
-                .fromHttpUrl("https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/")
-                .queryParam("key", apiKey)
-                .queryParam("steamid", steamId)
-                .queryParam("format", "json")
-                .toUriString();
+        try {
+            String url = UriComponentsBuilder
+                    .fromHttpUrl("https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/")
+                    .queryParam("key", apiKey)
+                    .queryParam("steamid", steamId)
+                    .queryParam("format", "json")
+                    .toUriString();
 
-        var response = restTemplate.getForObject(url, Map.class);
-        return extractGameInfoList(response, "response", "games");
+            var response = restTemplate.getForObject(url, Map.class);
+            return extractGameInfoList(response, "response", "games");
+
+        } catch (HttpClientErrorException | HttpServerErrorException ex) {
+            System.err.println("Steam API returned error: " + ex.getStatusCode() + " - " + ex.getResponseBodyAsString());
+            return Collections.emptyList();
+        } catch (Exception e) {
+            System.err.println("Error fetching recently played games: " + e.getMessage());
+            return Collections.emptyList();
+        }
     }
 
     public List<GameInfo> getOwnedGames(String steamId) {
