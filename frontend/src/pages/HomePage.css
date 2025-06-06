@@ -1,0 +1,87 @@
+.page-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #1b2838;
+    color: #c7d5e0;
+    min-height: 100vh;
+}
+
+.player-chart-container {
+    height: 300px;
+    margin-top: 1rem;
+    background-color: #2a475e;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.games-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: flex-start;
+}
+
+.games-section > div {
+    flex: 1 1 45%;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.games-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.games-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    background: #171a21;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    color: #c7d5e0;
+}
+
+.games-list img {
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.recently-played-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    background: #2a475e;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.recently-played-list img {
+    height: 60px;
+    width: 100px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+h1, h2 {
+    color: #66c0f4;
+}
+
+select {
+    background-color: #171a21;
+    color: #c7d5e0;
+    border: 1px solid #2a475e;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}

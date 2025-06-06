@@ -1,11 +1,12 @@
+/* Dark Theme Root Variables */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #0b0e14;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,28 +14,38 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure full dark background coverage */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0b0e14;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+#root {
+  width: 100%;
+  background-color: transparent;
+}
+
+/* Links */
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #66aaff;
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2;
+  color: #aaccff;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
+/* Headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #ffffff;
 }
 
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,26 +54,89 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #66aaff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Container Styles */
+.page-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Chart Section */
+.player-chart-container {
+  height: 300px;
+  margin-top: 1rem;
+}
+
+/* Game Sections */
+.games-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+
+.games-section > div {
+  flex: 1 1 45%;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+/* Game Lists */
+.games-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.games-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: #1e1e1e;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  color: #ddd;
+}
+
+.games-list img {
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Recently Played */
+.recently-played-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  background: #1e1e1e;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.recently-played-list img {
+  height: 60px;
+  width: 100px;
+  border-radius: 6px;
+  object-fit: cover;
 }

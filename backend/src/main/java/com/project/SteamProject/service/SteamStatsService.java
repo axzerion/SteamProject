@@ -30,7 +30,7 @@ public class SteamStatsService {
         scheduledFetchAll(); // Immediate fetch at startup
     }
 
-    // Automatically fetches stats every 300 seconds (5 min) for all listed App IDs
+    // Automatically fetches stats every 600 seconds (10 min) for all listed App IDs
     @Scheduled(fixedRate = 300000)
     public void scheduledFetchAll() {
         List<String> appIds = Arrays.asList(appIdsCsv.split(","));
@@ -66,6 +66,7 @@ public class SteamStatsService {
     public List<PlayerCount> getHistory(String appId) {
         return repo.findByAppIdOrderByTimestampAsc(appId);
     }
+
     public List<PlayerCount> getAllHistory() {
         return repo.findAll();
     }

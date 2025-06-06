@@ -5,5 +5,5 @@ public record GameInfo(
         String name,
         int playtimeMinutes,
         String iconUrl,
-        String logoUrl
-) {}
+        String logoUrl) {
+}

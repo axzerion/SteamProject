@@ -27,6 +27,7 @@ public class SteamUserGamesController {
     public List<GameInfo> getOwnedGames(@PathVariable String steamId) {
         return gameService.getOwnedGames(steamId);
     }
+
     @GetMapping("/test-cors")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("CORS is working");
