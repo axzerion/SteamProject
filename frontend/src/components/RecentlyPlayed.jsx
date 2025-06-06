@@ -1,9 +1,11 @@
+// Client-Server Architecture (REST API Consumer)
 import React, { useEffect, useState } from 'react';
 import { getRecentlyPlayed, getDefaultSteamId } from '../api/SteamAPI';
 
 function RecentlyPlayed() {
     const [games, setGames] = useState([]);
 
+    // Client-Server Architecture
     useEffect(() => {
         const fetchData = async () => {
             try {

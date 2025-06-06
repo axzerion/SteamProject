@@ -53,7 +53,7 @@ function PlayerChart({ data }) {
                     color: '#FFFFFF',
                 },
                 grid: {
-                    color: '#444', // Subtle grid lines
+                    color: '#444', // Grid lines
                 }
             },
             y: {

@@ -19,8 +19,13 @@ public class SteamStatsController {
             @PathVariable String appId,
             @RequestParam(defaultValue = "false") boolean refresh) {
         if (refresh) {
-            service.fetchAndSave(appId); // Only fetch live data if requested
+            service.fetchAndSave(appId);
         }
         return service.getHistory(appId);
+    }
+
+    @GetMapping("/all")
+    public List<PlayerCount> getAllStats() {
+        return service.getAllHistory();
     }
 }

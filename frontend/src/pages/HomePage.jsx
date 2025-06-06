@@ -4,7 +4,7 @@ import RecentlyPlayed from "../components/RecentlyPlayed.jsx";
 import OwnedGames from "../components/OwnedGames.jsx";
 import { getPlayerCounts } from "../api/SteamAPI.js";
 import SteamProfile from '../components/SteamProfile';
-import './HomePage.css'; // Ensure this is included!
+import './HomePage.css';
 
 function HomePage() {
     const [allData, setAllData] = useState([]);

@@ -79,7 +79,7 @@ public class SteamUserGameService {
             String name = (String) game.getOrDefault("name", "Unknown Game");
             int playtime = ((Number) game.getOrDefault("playtime_forever", 0)).intValue();
 
-            // Use img_icon_url only for owned games
+            // Use img_icon_url for owned games
             String iconHash = isOwned ? (String) game.getOrDefault("img_icon_url", "") : "";
             String iconUrl = iconHash.isEmpty() ? "" :
                     "https://media.steampowered.com/steamcommunity/public/images/apps/" + appid + "/" + iconHash + ".jpg";

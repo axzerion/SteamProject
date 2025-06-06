@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+// Singleton pattern
 @Service
 public class SteamStatsService {
 
@@ -30,7 +31,8 @@ public class SteamStatsService {
         scheduledFetchAll(); // Immediate fetch at startup
     }
 
-    // Automatically fetches stats every 600 seconds (10 min) for all listed App IDs
+    // Scheduler pattern
+    // Automatically fetches stats every 300 seconds (5 min) for all listed App IDs
     @Scheduled(fixedRate = 300000)
     public void scheduledFetchAll() {
         List<String> appIds = Arrays.asList(appIdsCsv.split(","));
@@ -47,7 +49,6 @@ public class SteamStatsService {
     public PlayerCount fetchAndSave(String appId) {
         int count = client.getCurrentPlayers(appId);
 
-        // Get the most recent record for this appId
         PlayerCount latest = repo.findTopByAppIdOrderByTimestampDesc(appId);
 
         // Only insert if player count changed
@@ -65,5 +66,9 @@ public class SteamStatsService {
 
     public List<PlayerCount> getHistory(String appId) {
         return repo.findByAppIdOrderByTimestampAsc(appId);
+    }
+
+    public List<PlayerCount> getAllHistory() {
+        return repo.findAll();
     }
 }

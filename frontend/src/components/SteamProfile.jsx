@@ -1,3 +1,4 @@
+// Client-Server Architecture (REST API Consumer)
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getDefaultSteamId } from '../api/SteamAPI';
