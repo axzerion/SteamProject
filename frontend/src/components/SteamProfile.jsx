@@ -4,13 +4,11 @@ import { getDefaultSteamId } from '../api/SteamAPI';
 
 function SteamProfile() {
     const [profile, setProfile] = useState(null);
-    const [, setSteamId] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const id = await getDefaultSteamId();
-                setSteamId(id);
                 const res = await axios.get(`/api/user/profile/${id}`);
                 setProfile(res.data);
             } catch (err) {

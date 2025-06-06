@@ -66,8 +66,4 @@ public class SteamStatsService {
     public List<PlayerCount> getHistory(String appId) {
         return repo.findByAppIdOrderByTimestampAsc(appId);
     }
-
-    public List<PlayerCount> getAllHistory() {
-        return repo.findAll();
-    }
 }

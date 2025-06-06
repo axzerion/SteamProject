@@ -18,7 +18,11 @@ public class SteamUserGameService {
     @Value("${steam.api.key}")
     private String apiKey;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public SteamUserGameService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public List<GameInfo> getRecentlyPlayedGames(String steamId) {
         try {

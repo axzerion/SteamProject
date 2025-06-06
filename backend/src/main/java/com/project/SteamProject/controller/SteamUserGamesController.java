@@ -3,7 +3,6 @@ package com.project.SteamProject.controller;
 import com.project.SteamProject.dto.GameInfo;
 import com.project.SteamProject.service.SteamUserGameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +25,6 @@ public class SteamUserGamesController {
     @GetMapping("/owned/{steamId}")
     public List<GameInfo> getOwnedGames(@PathVariable String steamId) {
         return gameService.getOwnedGames(steamId);
-    }
-
-    @GetMapping("/test-cors")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("CORS is working");
     }
 }
 

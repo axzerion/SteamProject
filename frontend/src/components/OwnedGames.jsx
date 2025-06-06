@@ -3,13 +3,11 @@ import { getOwnedGames, getDefaultSteamId } from '../api/SteamAPI';
 
 function OwnedGames() {
     const [games, setGames] = useState([]);
-    const [, setSteamId] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const id = await getDefaultSteamId();
-                setSteamId(id);
                 const fetchedGames = await getOwnedGames(id);
                 const sorted = [...fetchedGames].sort((a, b) => b.playtimeMinutes - a.playtimeMinutes);
                 setGames(sorted);

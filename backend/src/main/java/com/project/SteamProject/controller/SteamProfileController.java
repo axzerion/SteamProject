@@ -17,7 +17,11 @@ public class SteamProfileController {
     @Value("${steam.default.id}")
     private String defaultSteamId;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public SteamProfileController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @GetMapping("/api/user/default-id")
     public String getDefaultSteamId() {

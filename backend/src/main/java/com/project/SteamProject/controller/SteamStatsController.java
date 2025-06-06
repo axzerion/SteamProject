@@ -23,9 +23,4 @@ public class SteamStatsController {
         }
         return service.getHistory(appId);
     }
-
-    @GetMapping("/all")
-    public List<PlayerCount> getAllStats() {
-        return service.getAllHistory(); // New service method
-    }
 }

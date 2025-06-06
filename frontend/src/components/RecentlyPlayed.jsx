@@ -3,13 +3,11 @@ import { getRecentlyPlayed, getDefaultSteamId } from '../api/SteamAPI';
 
 function RecentlyPlayed() {
     const [games, setGames] = useState([]);
-    const [, setSteamId] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const id = await getDefaultSteamId();
-                setSteamId(id);
                 const fetchedGames = await getRecentlyPlayed(id);
                 setGames(fetchedGames);
             } catch (err) {

@@ -12,7 +12,11 @@ public class SteamApiClient {
     @Value("${steam.api.key}")
     private String apiKey;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    public SteamApiClient(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public int getCurrentPlayers(String appId) {
         String url = String.format(
