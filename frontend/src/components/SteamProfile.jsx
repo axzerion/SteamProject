@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const steamId = '76561198047552050';
+import { getDefaultSteamId } from '../api/SteamAPI';
 
 function SteamProfile() {
     const [profile, setProfile] = useState(null);
+    const [, setSteamId] = useState(null);
 
     useEffect(() => {
-        axios.get(`/api/user/profile/${steamId}`)
-            .then(res => setProfile(res.data))
-            .catch(err => console.error("Failed to load Steam profile", err));
+        const fetchData = async () => {
+            try {
+                const id = await getDefaultSteamId();
+                setSteamId(id);
+                const res = await axios.get(`/api/user/profile/${id}`);
+                setProfile(res.data);
+            } catch (err) {
+                console.error("Failed to load Steam profile", err);
+            }
+        };
+        fetchData();
     }, []);
 
     if (!profile) return null;

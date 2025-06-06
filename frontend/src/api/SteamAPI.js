@@ -2,6 +2,11 @@ import axios from 'axios';
 
 const API_BASE = 'http://localhost:8081/api/usergames';
 
+export const getDefaultSteamId = async () => {
+    const response = await axios.get('/api/user/default-id');
+    return response.data;
+};
+
 export const getPlayerCounts = async (appId, refresh = false) => {
     const response = await axios.get(`/api/playercount/${appId}`, {
         params: { refresh }

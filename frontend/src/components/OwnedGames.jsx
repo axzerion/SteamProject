@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { getOwnedGames } from '../api/steamApi';
-
-const steamId = '76561198047552050';
+import { getOwnedGames, getDefaultSteamId } from '../api/SteamAPI';
 
 function OwnedGames() {
     const [games, setGames] = useState([]);
+    const [, setSteamId] = useState(null);
 
     useEffect(() => {
-        getOwnedGames(steamId)
-            .then(fetchedGames => {
+        const fetchData = async () => {
+            try {
+                const id = await getDefaultSteamId();
+                setSteamId(id);
+                const fetchedGames = await getOwnedGames(id);
                 const sorted = [...fetchedGames].sort((a, b) => b.playtimeMinutes - a.playtimeMinutes);
                 setGames(sorted);
-            })
-            .catch(err => console.error("Failed to fetch owned games", err));
+            } catch (err) {
+                console.error("Failed to fetch owned games", err);
+            }
+        };
+        fetchData();
     }, []);
 
     return (

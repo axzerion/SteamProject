@@ -14,7 +14,15 @@ public class SteamProfileController {
     @Value("${steam.api.key}")
     private String apiKey;
 
+    @Value("${steam.default.id}")
+    private String defaultSteamId;
+
     private final RestTemplate restTemplate = new RestTemplate();
+
+    @GetMapping("/api/user/default-id")
+    public String getDefaultSteamId() {
+        return defaultSteamId;
+    }
 
     @GetMapping("/api/user/profile/{steamId}")
     public Map<String, Object> getSteamProfile(@PathVariable String steamId) {

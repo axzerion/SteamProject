@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { getRecentlyPlayed } from '../api/steamApi';
-
-const steamId = '76561198047552050';
+import { getRecentlyPlayed, getDefaultSteamId } from '../api/SteamAPI';
 
 function RecentlyPlayed() {
     const [games, setGames] = useState([]);
+    const [, setSteamId] = useState(null);
 
     useEffect(() => {
-        getRecentlyPlayed(steamId)
-            .then(setGames)
-            .catch(err => console.error("Failed to fetch recent games", err));
+        const fetchData = async () => {
+            try {
+                const id = await getDefaultSteamId();
+                setSteamId(id);
+                const fetchedGames = await getRecentlyPlayed(id);
+                setGames(fetchedGames);
+            } catch (err) {
+                console.error("Failed to fetch recent games", err);
+            }
+        };
+        fetchData();
     }, []);
 
     return (
