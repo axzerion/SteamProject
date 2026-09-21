@@ -6,7 +6,9 @@
 Create a `.env.properties` file with your Steam API key:
 
 mvn clean install (I do this every time)
+
 steam.api.key=YOUR_STEAM_API_KEY
+
 mvn spring-boot:run
 
 The backend will start on `http://localhost:8081`.
